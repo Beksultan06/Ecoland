@@ -1,0 +1,55 @@
+{% load static %}
+
+<header class="main-header clearfix">
+
+    <nav class="main-menu clearfix">
+        <div class="main-menu-wrapper clearfix">
+            <div class="container clearfix">
+                <div class="main-menu-wrapper-inner clearfix">
+                    <div class="main-menu-wrapper__left clearfix">
+                        <div class="main-menu-wrapper__logo">
+                            <a href="{% url 'index' %}"><img src="{% static 'assets/images/logo.png' %}" alt="" style="width: 80px;"></a>
+                        </div>
+                        <div class="main-menu-wrapper__main-menu">
+                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                            <ul class="main-menu__list">
+                                <li class="dropdown current">
+                                    <a href="{% url 'index' %}">Главная строница</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Направления</a>
+                                    <ul>
+                                        <li><a href="destinations.html">Направления</a></li>
+                                        <li><a href="destinations-details.html">Детали направлений</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Туры</a>
+                                    <ul>
+                                        <li><a href="tours.html">Туры</a></li>
+                                        <li><a href="tours-list.html">Список туров</a></li>
+                                        <li><a href="tour-details.html">Подробности тура</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="{% url 'about' %}"> О нас</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Новости</a>
+                                    <ul>
+                                        <li><a href="news.html">Новости</a></li>
+                                        <li><a href="news-details.html">Детали Новостей</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-menu-wrapper__right">
+                        <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

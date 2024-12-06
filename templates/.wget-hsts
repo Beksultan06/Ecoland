@@ -1,0 +1,5 @@
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
+tevily-html.vercel.app	0	1	1733304986	63072000
+preview.themeforest.net	0	0	1730548895	0
