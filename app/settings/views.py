@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from app.settings.models import SettingsBanner, Settings, GalleryMainPage, MainTours, VideoMainPage, Partners,\
 ImageMainPage, DopInfo, AboutPage, AboutPercent, TeamAboutPage, ContactPage
 from django.core.mail import send_mail
+from django.views.generic import TemplateView
 
 from app.settings.utils import send_contact_email
 
@@ -17,12 +18,16 @@ def index(request):
     dopinfo_all = DopInfo.objects.all()
     return render(request, 'base/index.html', locals())
 
-def about(request):
-    about_id = AboutPage.objects.latest("id")
-    about_procent_all = AboutPercent.objects.all()[:2]
-    about_all = AboutPercent.objects.all()[2:]
-    team_about_all = TeamAboutPage.objects.all()
-    return render(request, 'base/about.html', locals())
+class AboutPageView(TemplateView):
+    template_name = 'base/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['about_id'] = AboutPage.objects.latest("id")
+        context['about_procent_all'] = AboutPercent.objects.all()[:2]
+        context['about_all'] = AboutPercent.objects.all()[2:]
+        context['team_about_all'] = TeamAboutPage.objects.all()
+        return context
 
 def contact(request):
     contact_id = ContactPage.objects.latest("id")
