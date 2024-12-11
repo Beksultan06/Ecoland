@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class NewsPage(models.Model):
@@ -17,7 +18,7 @@ class NewsPage(models.Model):
     class Meta:
         verbose_name_plural = 'Строница Новостей'
 
-class NewsList(models.Model):
+class NewsListDetails(models.Model):
     title = models.CharField(
         max_length=155,
         verbose_name='Заголовка'
@@ -33,9 +34,38 @@ class NewsList(models.Model):
         max_length=155,
         verbose_name='Заголовка'
     )
+    descriptions = RichTextField(
+        verbose_name='Описание'
+    )
 
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name_plural = 'Лист Новостей'
+
+class NewsComment(models.Model):
+    name = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    email = models.EmailField(
+        verbose_name='Электронная почта'
+    )
+    comment = models.TextField(
+        verbose_name='Описание'
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата создание коментарий',
+        null=True,
+        blank=True
+    )
+    news = models.ForeignKey(NewsListDetails, related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Комментрия Новостей'
+        ordering = ['-created_at']

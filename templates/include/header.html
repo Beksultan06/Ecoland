@@ -1,14 +1,15 @@
 {% load static %}
 
 <header class="main-header clearfix">
-
     <nav class="main-menu clearfix">
         <div class="main-menu-wrapper clearfix">
             <div class="container clearfix">
                 <div class="main-menu-wrapper-inner clearfix">
                     <div class="main-menu-wrapper__left clearfix">
                         <div class="main-menu-wrapper__logo">
-                            <a href="{% url 'index' %}"><img src="{% static 'assets/images/logo.png' %}" alt="" style="width: 80px;"></a>
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: 80px;">
+                            </a>
                         </div>
                         <div class="main-menu-wrapper__main-menu">
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -32,13 +33,13 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="{% url 'about' %}"> О нас</a>
+                                    <a href="{% url 'about' %}">О нас</a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#">Новости</a>
                                     <ul>
-                                        <li><a href="{% url 'news' %}">Новости</a></li>
-                                        <li><a href="news-details.html">Детали Новостей</a></li>
+                                        <li><a href="{% url 'news:news' %}">Новости</a></li>
+                                        <li><a href="news-details.html">Детали новостей</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'contact' %}">Контакты</a></li>
@@ -65,37 +66,30 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-            const languageSwitches = document.querySelectorAll('.language-switch');
+        const languageSwitches = document.querySelectorAll('.language-switch');
 
-            // Пытаемся определить текущий язык из URL, предполагая, что он может быть первым сегментом пути
-            const currentLanguage = window.location.pathname.split('/')[1];
+        const currentLanguage = window.location.pathname.split('/')[1];
 
-            languageSwitches.forEach(function (languageSwitch) {
-                const selectedLanguage = languageSwitch.getAttribute('data-language');
+        languageSwitches.forEach(function (languageSwitch) {
+            const selectedLanguage = languageSwitch.getAttribute('data-language');
 
-                // Выделение активного языка
-                if (selectedLanguage === currentLanguage) {
-                    languageSwitch.classList.add('active-language');
+            if (selectedLanguage === currentLanguage) {
+                languageSwitch.classList.add('active-language');
+            }
+
+            languageSwitch.addEventListener('click', function () {
+                const pathSegments = window.location.pathname.split('/');
+                if (['ru', 'en'].includes(pathSegments[1])) {
+                    pathSegments[1] = selectedLanguage;
+                } else {
+                    pathSegments.splice(1, 0, selectedLanguage);
                 }
 
-                languageSwitch.addEventListener('click', function () {
-                    // Строим URL с учетом возможных случаев структуры путей
-                    const pathSegments = window.location.pathname.split('/');
-                    if (['ru', 'en'].includes(pathSegments[1])) {
-                        // Если первый сегмент — код языка, заменяем его
-                        pathSegments[1] = selectedLanguage;
-                    } else {
-                        // Если первый сегмент не код языка, добавляем код языка в начало
-                        pathSegments.splice(1, 0, selectedLanguage);
-                    }
+                const newPath = pathSegments.join('/');
+                const newUrl = window.location.origin + newPath + window.location.search;
 
-                    // Объединяем сегменты обратно в строку пути и формируем новый URL
-                    const newPath = pathSegments.join('/');
-                    const newUrl = window.location.origin + newPath + window.location.search;
-
-                    window.location.href = newUrl;
-                });
+                window.location.href = newUrl;
             });
         });
-
+    });
 </script>

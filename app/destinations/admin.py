@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.destinations.models import DestinationsModels
+from app.destinations.models import DestinationsModels, DestinationsDetailModels
 from django.utils.html import mark_safe
 
 # Register your models here.
@@ -17,3 +17,7 @@ class DestinationsModelsAdmin(admin.ModelAdmin):
 
     def image_preview(self, obj):
         return image_preview(obj, 'image')
+
+@admin.register(DestinationsDetailModels)
+class DestinationsDetailModelsAdmin(admin.ModelAdmin):
+    list_display = ("id", 'title', "title_price")

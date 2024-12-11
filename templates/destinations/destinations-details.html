@@ -14,12 +14,12 @@
     <!--Page Header Start-->
     <section class="page-header">
         <div class="page-header__top">
-            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+            <div class="page-header-bg" style="background-image: url({{ destination_id.image.url }})">
             </div>
             <div class="page-header-bg-overly"></div>
             <div class="container">
                 <div class="page-header__top-inner">
-                    <h2>Destinations Details</h2>
+                    <h2 >{{ destination_id.title }}</h2>
                 </div>
             </div>
         </div>
@@ -27,9 +27,9 @@
             <div class="container">
                 <div class="page-header__bottom-inner">
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'index' %}">Главная</a></li>
                         <li><span>.</span></li>
-                        <li class="active">Destinations</li>
+                        <li class="active">Наши направление</li>
                     </ul>
                 </div>
             </div>
@@ -44,21 +44,11 @@
                 <div class="col-xl-8 col-lg-7">
                     <div class="destinations-details__left">
                         <div class="destinations-details__img">
-                            <img src="assets/images/resources/destinations-details-img-1.jpg" alt="">
+                            <img src="{{ destination_id.image.url }}" alt="">
                         </div>
                         <div class="destinations-details__discover">
-                            <h3 class="destinations-details__title">Discover Spain</h3>
-                            <p class="destinations-details__discover-text-1">Lorem ipsum available isn but the majority
-                                have suffered alteratin in some or form injected. Lorem Ipsum. Proin gravida nibh vel
-                                velit auctor aliqueenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat
-                                ipsum, nec sagittis sem nibh id elit. vulputate cursus a sit amet mauris. Morbi accumsan
-                                ipsum veliam nec tellus a odio tincidunt auctor.</p>
-                            <p class="destinations-details__discover-text-2">There are many variations of passages of
-                                Lorem Ipsum available, but the majority have suffered alteration in some injected or
-                                words which don't look even slightly believable. If you are going to use a passage of
-                                Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle
-                                of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
-                                as necessary,</p>
+                            <h3 class="destinations-details__title">{{ destination_id.title }}</h3>
+                            <p class="destinations-details__discover-text-1">{{ destination_details.descriptions|safe }}</p>
                         </div>
                         <div class="destinations-details__overview">
                             <h3 class="destinations-details__title">Overview</h3>
@@ -157,7 +147,7 @@
                             <ul class="tour-details-two__last-minute-list list-unstyled">
                                 <li>
                                     <div class="tour-details-two__last-minute-image">
-                                        <img src="assets/images/resources/td-img-1.jpg" alt="">
+                                        <img src="{% static 'assets/images/resources/td-img-1.jpg' %}" alt="">
                                     </div>
                                     <div class="tour-details-two__last-minute-content">
                                         <h6>$380</h6>
@@ -167,7 +157,7 @@
                                 </li>
                                 <li>
                                     <div class="tour-details-two__last-minute-image">
-                                        <img src="assets/images/resources/td-img-2.jpg" alt="">
+                                        <img src="{% static 'assets/images/resources/td-img-2.jpg' %}" alt="">
                                     </div>
                                     <div class="tour-details-two__last-minute-content">
                                         <h6>$380</h6>
@@ -177,7 +167,7 @@
                                 </li>
                                 <li>
                                     <div class="tour-details-two__last-minute-image">
-                                        <img src="assets/images/resources/td-img-3.jpg" alt="">
+                                        <img src="{% static 'assets/images/resources/td-img-3.jpg' %}" alt="">
                                     </div>
                                     <div class="tour-details-two__last-minute-content">
                                         <h6>$380</h6>
@@ -188,7 +178,7 @@
                             </ul>
                         </div>
                         <div class="destinations-details__discount">
-                            <img src="assets/images/resources/destinations-details__discount-img.jpg" alt="">
+                            <img src="{% static 'assets/images/resources/destinations-details__discount-img.jpg' %}" alt="">
                             <div class="destinations-details__discount-content">
                                 <h2>30%</h2>
                                 <h4>Discount on Spain <br> Tours</h4>
@@ -199,7 +189,6 @@
             </div>
         </div>
     </section>
-
     {% include 'include/footer.html' %}
 </div>
 {% endblock %}

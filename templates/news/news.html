@@ -37,7 +37,7 @@
                         <div class="news-one__single">
                             <div class="news-one__img">
                                 <img src="{{ news.image.url }}" alt="" style="width: 370px; height: 370px;">
-                                <a href="{% url 'news-detail' news.id %}">
+                                <a href="{% url 'news:news-detail' id=news.id %}">
                                     <span class="news-one__plus"></span>
                                 </a>
                                 <div class="news-one__date">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="news-one__content">
                                 <h3 class="news-one__title">
-                                    <a href="{% url 'news-detail' news.id %}">{{ news.title }}</a>
+                                    <a href="{% url 'news:news-detail' id=news.id %}">{{ news.title }}</a>
                                 </h3>
                             </div>
                         </div>

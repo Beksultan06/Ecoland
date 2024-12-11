@@ -40,7 +40,7 @@
                             <div class="destinations-one__img">
                                 <img src="{{ destinations.image.url }}" alt="" style="width: 285px; height: 285px;">
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="{% url 'destinations-details' destinations.id %}">{{ destinations.title }}</a></h2>
+                                    <h2 class="destinations-one__title"><a href="{% url 'destinations-details' pk=destinations.id %}">{{ destinations.title }}</a></h2>
                                 </div>
                             </div>
                         </div>
