@@ -15,6 +15,7 @@ urlpatterns += i18n_patterns(
     path("", include("app.settings.urls")),
     path("", include("app.news.urls")),
     path("", include("app.destinations.urls")),
+    path("", include("app.tour.urls")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

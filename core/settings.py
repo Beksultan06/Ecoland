@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+from config import token
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure--z29i9@=gom5$wfi38b!^z#r3bir#4zvi)-6-l%rkzu(4x$=@k"
+SECRET_KEY = token
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'app.settings',
     'app.news',
     'app.destinations',
+    'app.tour',
 
     'ckeditor',
 ]

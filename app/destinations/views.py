@@ -1,5 +1,7 @@
+from django.http import Http404
 from django.views.generic import TemplateView
 from app.destinations.services import DestinationsService
+
 
 class DestinationsView(TemplateView):
     template_name = 'destinations/destinations.html'
@@ -7,7 +9,8 @@ class DestinationsView(TemplateView):
     def get_context_data(self, **kwargs):
         """Передаем все направления в контекст."""
         context = super().get_context_data(**kwargs)
-        context['destinations_all'] = DestinationsService.get_all_destinations()
+        destinations = DestinationsService.get_all_destinations()
+        context['destinations_all'] = destinations
         return context
 
 
@@ -17,14 +20,21 @@ class DestinationsDetailsView(TemplateView):
     def get_context_data(self, **kwargs):
         """Передаем детали направления в контекст."""
         context = super().get_context_data(**kwargs)
-        destination = DestinationsService.get_destination_by_id(kwargs['pk'])
-        if destination is None:
-            context['error'] = "Направление не найдено"
-            return context
-        destination_details = DestinationsService.get_destination_details_by_destination(destination)
-        destination_details_pynkt = DestinationsService.get_all_destinationspynkt()
+        try:
+            destination = DestinationsService.get_destination_by_id(kwargs['pk'])
+            if not destination:
+                raise Http404("Направление не найдено")
 
-        context['destination_id'] = destination
-        context['destination_details'] = destination_details
-        context['destination_details_pynkt'] = destination_details_pynkt
+            destination_details = DestinationsService.get_destination_details_by_destination(destination)
+            destination_details_pynkt = DestinationsService.get_all_destinationspynkt()
+
+            context.update({
+                'destination_id': destination,
+                'destination_details': destination_details,
+                'destination_details_pynkt': destination_details_pynkt,
+            })
+
+        except Exception as e:
+            context['error'] = str(e)
+
         return context
