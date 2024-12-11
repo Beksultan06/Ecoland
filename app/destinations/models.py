@@ -11,6 +11,9 @@ class DestinationsModels(models.Model):
         upload_to='destinations',
         verbose_name='Фото'
     )
+    descriptions = RichTextField(
+        verbose_name='Описание В деталей'
+    )
 
     def __str__(self):
         return self.title
@@ -23,16 +26,10 @@ class DestinationsDetailModels(models.Model):
         DestinationsModels,
         on_delete=models.CASCADE,
         verbose_name='Направление'
-    )  # Связь с основной моделью
-    descriptions = RichTextField(
-        verbose_name='Описание'
     )
     title = models.CharField(
         max_length=155,
         verbose_name='Заголовка'
-    )
-    title_price = models.IntegerField(
-        verbose_name='Заголовка Цены'
     )
 
     def __str__(self):
@@ -40,3 +37,22 @@ class DestinationsDetailModels(models.Model):
 
     class Meta:
         verbose_name_plural = 'Детально о наших направлениях'
+
+class DestinationsPynkt(models.Model):
+    title = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    descriptions = RichTextField(
+        verbose_name='Описание'
+    )
+    is_active = models.BooleanField(
+        default=False,
+        verbose_name='Активен?'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Пункты наших направления'

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.destinations.models import DestinationsModels, DestinationsDetailModels
+from app.destinations.models import DestinationsModels, DestinationsDetailModels, DestinationsPynkt
 from django.utils.html import mark_safe
 
 # Register your models here.
@@ -20,4 +20,8 @@ class DestinationsModelsAdmin(admin.ModelAdmin):
 
 @admin.register(DestinationsDetailModels)
 class DestinationsDetailModelsAdmin(admin.ModelAdmin):
-    list_display = ("id", 'title', "title_price")
+    list_display = ("id", 'title')
+
+@admin.register(DestinationsPynkt)
+class DestinationsPynktAdmin(admin.ModelAdmin):
+    list_display = ("id", "title")

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from app.news.models import NewsPage, NewsListDetails, NewsComment
+from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
 def image_preview(obj, field_name):
@@ -11,14 +12,14 @@ def image_preview(obj, field_name):
 image_preview.short_description = 'Фото'
 
 @admin.register(NewsPage)
-class NewsPageAdmin(admin.ModelAdmin):
+class NewsPageAdmin(TranslationAdmin):
     list_display = ("id", 'title', 'image_preview')
 
     def image_preview(self, obj):
         return image_preview(obj, 'image')
 
 @admin.register(NewsListDetails)
-class NewsListDetailsAdmin(admin.ModelAdmin):
+class NewsListDetailsAdmin(TranslationAdmin):
     list_display = ("id", "title", 'image_preview')
 
     def image_preview(self, obj):
