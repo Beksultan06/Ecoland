@@ -1,13 +1,11 @@
 {% extends 'include/homepage.html' %}
 {%load static%}
 {%block content%}
-<!-- /.preloader -->
 <div class="page-wrapper">
     {% include 'include/header.html' %}
     <div class="stricky-header stricked-menu main-menu">
-        <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-    </div><!-- /.stricky-header -->
-    <!--Page Header Start-->
+        <div class="sticky-header__content"></div>
+    </div>
     <section class="page-header">
         <div class="page-header__top">
             <div class="page-header-bg" style="background-image: url({{ destination_id.image.url }})">
@@ -31,9 +29,6 @@
             </div>
         </div>
     </section>
-    <!--Page Header End-->
-
-    <!--Destinations Details Start-->
     <section class="destinations-details">
         <div class="container">
             <div class="row">
@@ -56,7 +51,7 @@
                                     <div class="accrodion-content">
                                         <div class="inner">
                                             <p>{{ pynkt.descriptions|safe }}</p>
-                                        </div><!-- /.inner -->
+                                        </div>
                                     </div>
                                 </div>
                                 {% endfor %}

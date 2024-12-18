@@ -13,15 +13,13 @@ class DestinationsView(TemplateView):
         context['destinations_all'] = destinations
         return context
 
-
 class DestinationsDetailsView(TemplateView):
     template_name = 'destinations/destinations-details.html'
 
     def get_context_data(self, **kwargs):
-        """Передаем детали направления в контекст."""
         context = super().get_context_data(**kwargs)
         try:
-            destination = DestinationsService.get_destination_by_id(kwargs['pk'])
+            destination = DestinationsService.get_destination_by_id(kwargs['id'])
             if not destination:
                 raise Http404("Направление не найдено")
 

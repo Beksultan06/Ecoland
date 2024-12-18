@@ -45,3 +45,7 @@ class TeamAboutPageTranslation(TranslationOptions):
 @register(ContactPage)
 class ContactPageTranslation(TranslationOptions):
     fields = ("title", "title_form", "title_form2")
+
+@register(AboutPercent)
+class AboutPercentTranslation(TranslationOptions):
+    fields = ("title",)

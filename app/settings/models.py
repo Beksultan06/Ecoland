@@ -132,7 +132,7 @@ class AboutPage(models.Model):
 
 class AboutPercent(models.Model):
     class Meta:
-        verbose_name_plural = 'Проценты о нас '
+        verbose_name_plural = 'Проценты (о нас )'
 
     title = models.CharField(max_length=155, verbose_name='Заголовка')
     procent = models.IntegerField(verbose_name='Проценты')

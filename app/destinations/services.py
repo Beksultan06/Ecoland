@@ -11,9 +11,9 @@ class DestinationsService:
         return DestinationsPynkt.objects.all()
 
     @staticmethod
-    def get_destination_by_id(pk):
+    def get_destination_by_id(id):
         try:
-            return DestinationsModels.objects.get(pk=pk)
+            return DestinationsModels.objects.get(id=id)
         except ObjectDoesNotExist:
             return None
 

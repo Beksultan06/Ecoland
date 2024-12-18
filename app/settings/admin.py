@@ -56,6 +56,10 @@ class AboutPageAdmin(TranslationAdmin):
 class TeamAboutPageAdmin(TranslationAdmin):
       list_display = ("id", 'title')
 
+@admin.register(AboutPercent)
+class AboutPercentAdmin(admin.ModelAdmin):
+    list_display = ("id", "title")
+
 @admin.register(ContactPage)
 class ContactPageAdmin(TranslationAdmin):
     list_display = ("id", 'title', 'image_preview')
