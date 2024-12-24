@@ -14,10 +14,7 @@ image_preview.short_description = 'Фото'
 
 @admin.register(Settings)
 class SettingsAdmin(TranslationAdmin):
-    list_display = ("id", 'title', "image_preview")
-
-    def image_preview(self, obj):
-            return image_preview(obj, 'image')
+    list_display = ("id", 'title')
 
 @admin.register(SettingsBanner)
 class SettingsBannerAdmin(TranslationAdmin):
