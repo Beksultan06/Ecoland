@@ -3,10 +3,8 @@ from app.settings.models import SettingsBanner, Settings, GalleryMainPage, MainT
 ImageMainPage, DopInfo, AboutPage, AboutPercent, TeamAboutPage, ContactPage
 from django.core.mail import send_mail
 from django.views.generic import TemplateView
-
 from app.settings.utils import send_contact_email
 
-# Create your views here.
 def index(request):
     settings_all = SettingsBanner.objects.all()
     settings_id = Settings.objects.latest('id')

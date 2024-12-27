@@ -6,7 +6,6 @@ class NewsView(TemplateView):
     template_name = 'news/news.html'
 
     def get_context_data(self, **kwargs):
-        """Передача данных для отображения списка новостей."""
         context = super().get_context_data(**kwargs)
         context['news_id'] = NewsService.get_latest_news()
         context['news_list_all'] = NewsService.get_all_news()
@@ -16,7 +15,6 @@ class NewsDetailsView(TemplateView):
     template_name = 'news/news-details.html'
 
     def get_context_data(self, **kwargs):
-        """Передача данных для отображения деталей новости и комментариев."""
         context = super().get_context_data(**kwargs)
         news = NewsService.get_news_details(kwargs['id'])
         page_number = self.request.GET.get('page')
@@ -28,7 +26,6 @@ class NewsDetailsView(TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        """Обработка формы комментариев."""
         name = request.POST.get('name')
         email = request.POST.get('email')
         comment = request.POST.get('message')

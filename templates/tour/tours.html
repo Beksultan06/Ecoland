@@ -1,25 +1,19 @@
 {% extends 'include/homepage.html' %}
 {%load static%}
 {%block content%}
-    <!-- /.preloader -->
     <div class="page-wrapper">
         {% include 'include/header.html' %}
-
-
         <div class="stricky-header stricked-menu main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-
-        <!--Page Header Start-->
+            <div class="sticky-header__content"></div>
+        </div>
         <section class="page-header">
             <div class="page-header__top">
-                <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+                <div class="page-header-bg" style="background-image: url({{ tour_id.image.url }})">
                 </div>
                 <div class="page-header-bg-overly"></div>
                 <div class="container">
                     <div class="page-header__top-inner">
-                        <h2>Popular Tours</h2>
+                        <h2>{{ tour_id.title }}</h2>
                     </div>
                 </div>
             </div>
@@ -27,25 +21,22 @@
                 <div class="container">
                     <div class="page-header__bottom-inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{% url 'index' %}">{{ tour_id.main }}</a></li>
                             <li><span>.</span></li>
-                            <li class="active">Tours</li>
+                            <li class="active">{{ tour_id.tour }}</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Page Header End-->
-
-        <!--Popular Tours Two Start-->
         <section class="popular-tours-two">
             <div class="container">
                 <div class="row">
+                    {% for tour in tour_all %}
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <!--Popular Tours Two Single-->
                         <div class="popular-tours__single">
                             <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-1.jpg" alt="">
+                                <img src="{{ tour.image.url }}" alt="" width="300px" height="300px">
                                 <div class="popular-tours__icon">
                                     <a href="tour-details.html">
                                         <i class="fa fa-heart"></i>
@@ -54,154 +45,17 @@
                             </div>
                             <div class="popular-tours__content">
                                 <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
+                                    <i class="fa fa-star"></i> {{ tour.star }}
                                 </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
-                                        Tour</a></h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                </ul>
+                                <h3 class="popular-tours__title"><a href="tour-details.html">{{ tour.title }}</a></h3>
+                                <p class="popular-tours__rate"><span>${{ tour.price }}</span> / {{ tour.person }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <!--Popular Tours Two Single-->
-                        <div class="popular-tours__single">
-                            <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-2.jpg" alt="">
-                                <div class="popular-tours__icon">
-                                    <a href="tour-details.html">
-                                        <i class="fa fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="popular-tours__content">
-                                <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
-                                </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">The Dark Forest
-                                        Adventure</a></h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                        <!--Popular Tours Two Single-->
-                        <div class="popular-tours__single">
-                            <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-3.jpg" alt="">
-                                <div class="popular-tours__icon">
-                                    <a href="tour-details.html">
-                                        <i class="fa fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="popular-tours__content">
-                                <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
-                                </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">Discover Depth of Beach</a>
-                                </h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                        <!--Popular Tours Two Single-->
-                        <div class="popular-tours__single">
-                            <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-4.jpg" alt="">
-                                <div class="popular-tours__icon">
-                                    <a href="tour-details.html">
-                                        <i class="fa fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="popular-tours__content">
-                                <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
-                                </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">Moscow Red City Land</a>
-                                </h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                        <!--Popular Tours Two Single-->
-                        <div class="popular-tours__single">
-                            <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-5.jpg" alt="">
-                                <div class="popular-tours__icon">
-                                    <a href="tour-details.html">
-                                        <i class="fa fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="popular-tours__content">
-                                <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
-                                </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">Magic of Italy Tours</a>
-                                </h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="600ms">
-                        <!--Popular Tours Two Single-->
-                        <div class="popular-tours__single">
-                            <div class="popular-tours__img">
-                                <img src="assets/images/resources/popular-tours-two__img-6.jpg" alt="">
-                                <div class="popular-tours__icon">
-                                    <a href="tour-details.html">
-                                        <i class="fa fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="popular-tours__content">
-                                <div class="popular-tours__stars">
-                                    <i class="fa fa-star"></i> 8.0 Superb
-                                </div>
-                                <h3 class="popular-tours__title"><a href="tour-details.html">Discover Depth of Beach</a>
-                                </h3>
-                                <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                <ul class="popular-tours__meta list-unstyled">
-                                    <li><a href="tour-details.html">3 Days</a></li>
-                                    <li><a href="tour-details.html">12+</a></li>
-                                    <li><a href="tour-details.html">Los Angeles</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
-        <!--Popular Tours Two End-->
         {% include 'include/footer.html' %}
     </div>
     {% endblock %}
